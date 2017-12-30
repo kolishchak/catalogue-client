@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './category/category.component';
-import { ItemComponent } from './item/item.component';
-import { ItemDetailsComponent } from './item-details/item-details.component';
+import { CategoryComponent } from './components/category.component';
+import { ItemComponent } from './components/item.component';
+import { ItemDetailsComponent } from './components/item-details.component';
 
+import { CategoryService } from './services/category.service';
+import { ItemService } from './services/item.service';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,13 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     ItemDetailsComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    CategoryService,
+    ItemService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
