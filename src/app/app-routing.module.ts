@@ -6,9 +6,9 @@ import { ItemComponent } from './components/item.component';
 //import { ItemDetailsComponent } from './components/item-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/category', pathMatch: 'full' },
-  { path: 'category', component: CategoryComponent },
-  { path: 'items', component: ItemComponent }
+  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: ':slug', component: CategoryComponent },
+  { path: 'items/:slug', component: ItemComponent }
 ];
 
 @NgModule({
