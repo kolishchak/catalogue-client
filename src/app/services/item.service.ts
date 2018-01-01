@@ -13,7 +13,7 @@ export class ItemService {
   getItems():Observable<Item[]> {
     return this.http.get(this.itemUrl)
       .map((response: Response) => <Item[]>response.json())
-      .do(data => console.log('server data:', data))
+      .do(data => console.log('Items data:', data))
       .catch(this.handleError);
   }
 

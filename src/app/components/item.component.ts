@@ -5,7 +5,7 @@ import { Item } from '../interfaces/item';
 import { ItemService } from '../services/item.service';
 
 @Component({
-  selector: 'app-item',
+  selector: 'item',
   templateUrl: '../templates/item.component.html',
   styleUrls: ['../styles/item.component.scss']
 })
