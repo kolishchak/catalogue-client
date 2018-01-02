@@ -1,1 +1,11 @@
+// TODO: filter by select
+<div class="category-container">
+  <label>Choose category:</label>
+  <ul class="nav nav-pills">
+    <li routerLinkActive="active" *ngFor="let category of categories | async">
+      <a [routerLink]="['/', category.slug]">{{category.name}}</a>
+    </li>
+  </ul>
+</div>
+
 <item></item>
