@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, Params } from "@angular/router";
+import { Location } from "@angular/common";
 
 import { Item } from '../interfaces/item';
 import { ItemService } from '../services/item.service';
@@ -14,7 +15,8 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   private sub: any;
 
   constructor(private itemService: ItemService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private location: Location) { }
 
   ngOnInit() {
       this.sub = this.activatedRoute.params.subscribe(params => {
@@ -27,4 +29,8 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+
+  goBack() {
+    this.location.back();
+  } 
 }
