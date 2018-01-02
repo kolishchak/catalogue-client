@@ -1,3 +1,17 @@
-<p>
-  item-details works!
-</p>
+<section *ngIf="item">
+  <section>
+    <h3>About {{item.name}} Product</h3>
+    <h4>Name</h4>
+    <p>
+      {{item.name}}
+    </p>
+    <h4>Description</h4>
+    <p>
+      {{item.description}}
+    </p>
+    <h4>Currency</h4>
+    <p>
+      {{item.price | currency}}
+    </p>
+  </section>
+</section>

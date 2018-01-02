@@ -6,7 +6,7 @@ import { Item } from '../interfaces/item';
 
 @Injectable()
 export class ItemService {
-  private itemUrl = 'http://localhost:3000/items';
+  private itemUrl = 'http://localhost:3000/items/';
 
   constructor(private http: Http) {}
 
@@ -15,6 +15,10 @@ export class ItemService {
       .map((response: Response) => <Item[]>response.json())
       .do(data => console.log('Items data:', data))
       .catch(this.handleError);
+  }
+
+  getItem(slug: string) {
+    return this.http.get(this.itemUrl + slug)
   }
 
   public handleError(error: Response) {
