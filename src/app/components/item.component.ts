@@ -1,26 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 import { Item } from '../interfaces/item';
 import { ItemService } from '../services/item.service';
 
+
 @Component({
   selector: 'item',
   templateUrl: '../templates/item.component.html',
-  styleUrls: ['../styles/item.component.scss']
+  styleUrls: ['../styles/item.component.scss'],
 })
 
 export class ItemComponent implements OnInit {
-  items: Item[];
+  @Input() slug: string;
 
-  constructor(private itemService: ItemService) { }
+  items: Observable<Item[]>;
+  p: number = 1;
 
-  ngOnInit() {
-    this.getItems()
+  constructor(private itemService: ItemService) { 
   }
 
-  getItems() {
-    this.itemService.getItems()
-    .subscribe(items => this.items = items);
+  ngOnInit() {
+    this.items = this.itemService.getItems(this.slug, this.p.toString())
+  }
+
+  getPage(page: number) {
+    this.p = page;
+    this.itemService.getItems(this.slug, page.toString());
   }
 }

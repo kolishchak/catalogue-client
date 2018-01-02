@@ -22,7 +22,6 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
       this.sub = this.activatedRoute.params.subscribe(params => {
       let slug = params['slug'];
       this.itemService.getItem(slug)
-          .subscribe(response => this.item = response.json())
     });
   }
 

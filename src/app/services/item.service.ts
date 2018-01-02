@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { Item } from '../interfaces/item';
@@ -10,8 +10,10 @@ export class ItemService {
 
   constructor(private http: Http) {}
 
-  getItems():Observable<Item[]> {
-    return this.http.get(this.itemUrl)
+  getItems(slug: string, page: string):Observable<Item[]> {
+    let params = new URLSearchParams();
+    params.set('page', page);
+    return this.http.get(this.itemUrl, { search: params })
       .map((response: Response) => <Item[]>response.json())
       .do(data => console.log('Items data:', data))
       .catch(this.handleError);
@@ -25,6 +27,6 @@ export class ItemService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
-
+  
 }
 

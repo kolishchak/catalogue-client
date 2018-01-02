@@ -1,7 +1,6 @@
 <h1>Item List</h1>
  
-<p *ngIf="!items"><em>Load collection of items...</em></p>
- 
+<p *ngIf="!items"><em>Loading collection of items...</em></p>
 <table class="table" *ngIf="items">
     <thead>
         <tr>
@@ -9,9 +8,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of items">
+        <tr *ngFor="let item of items | async | paginate: { itemsPerPage: 1, currentPage: p }">
             <td>{{item.name}}</td>
             <td><a [routerLink]="['/items', item.slug]">Details</a></td>
         </tr>
     </tbody>
 </table>
+<pagination-controls (pageChange)="getPage($event)"></pagination-controls>

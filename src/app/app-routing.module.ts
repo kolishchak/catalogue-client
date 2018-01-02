@@ -5,7 +5,7 @@ import { CategoryComponent } from './components/category.component';
 import { ItemDetailsComponent } from './components/item-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: '', redirectTo: '/category', pathMatch: 'full' },
   { path: ':slug', component: CategoryComponent },
   { path: 'items/:slug', component: ItemDetailsComponent }
 ];

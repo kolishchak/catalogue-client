@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category.component';
@@ -19,9 +20,10 @@ import { ItemService } from './services/item.service';
     ItemDetailsComponent
   ],
   imports: [
+    BrowserModule,
     AppRoutingModule,
     HttpModule,
-    BrowserModule
+    NgxPaginationModule
   ],
   providers: [
     CategoryService,
