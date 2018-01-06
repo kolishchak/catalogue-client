@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from "@angular/router";
 import { Location } from "@angular/common";
 
@@ -12,6 +12,7 @@ import { ItemService } from '../services/item.service';
 })
 
 export class ItemDetailsComponent implements OnInit, OnDestroy {
+  @Input() item: Item
   private sub: any;
 
   constructor(private itemService: ItemService,
@@ -22,6 +23,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
       this.sub = this.activatedRoute.params.subscribe(params => {
       let slug = params['slug'];
       this.itemService.getItem(slug)
+                      .subscribe(response => {this.item = response.json()});
     });
   }
 
