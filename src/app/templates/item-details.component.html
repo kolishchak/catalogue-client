@@ -1,21 +1,47 @@
-<section *ngIf="item">
-  <section>
-    <h3>About {{item.name}} Product</h3>
-    <h4>Name</h4>
-    <p>
-      {{item.name}}
-    </p>
-    <h4>Description</h4>
-    <p>
-      {{item.description}}
-    </p>
-    <h4>Currency</h4>
-    <p>
-      {{item.price | currency}}
-    </p>
-    <p>
-      <a (click)="goBack()">Go Back</a>
-    </p>
-  </section>
-</section>
+<div class="container">
+    <div class="row">
+      <div class="wrapper">
+            <div class="side-bar">
+                  <ul>
+                      <li class="menu-head">
+                          CATEGORIES <a href="#" class="push_menu"><span class="glyphicon glyphicon-align-justify pull-right"></span></a>
+                      </li>
+                      <div class="menu">         
+                          <li *ngFor="let category of categories | async">
+                              <a href="#" (click)="onSelect(category.slug)" [routerLink]="['/', category.slug]">
+                                {{category.name}}
+                              </a>
+                      </div>
+                  </ul>
+            </div>   
+              <div class="content" >
+                  <div class="col-md-12">
+                      <div class="panel panel-default">
+                          <div class="panel-body" *ngIf="item" >
+                              <h4>Name</h4>
+                              <p>
+                                {{item.name}}
+                              </p>
+                              <h4>Description</h4>
+                              <p>
+                                {{item.description}}
+                              </p>
+                              <h4>Currency</h4>
+                              <p>
+                                {{item.price}}
+                              </p>
+                              <p>
+                                <a (click)="goBack()">Go Back</a>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+  </div>
+</div>
+
+
+
+
 

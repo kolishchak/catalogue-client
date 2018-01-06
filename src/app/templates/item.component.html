@@ -1,17 +1,19 @@
-<h1>Item List</h1>
- 
-<p *ngIf="!items"><em>Loading collection of items...</em></p>
+
+ <p *ngIf="!items"><em>Loading collection of items...</em></p>
+
 <table class="table" *ngIf="items">
     <thead>
         <tr>
             <th>Name</th>
+            <th>Details</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of items | async | paginate: { itemsPerPage: 1, currentPage: p }">
+        <tr *ngFor="let item of items | async | paginate: { itemsPerPage: 5, currentPage: p }">
             <td>{{item.name}}</td>
-            <td><a [routerLink]="['/items', item.slug]">Details</a></td>
+            <td><span [routerLink]="['/items', item.slug]"><i class="fa fa-eye"></i> View more</span></td>
         </tr>
     </tbody>
 </table>
+
 <pagination-controls (pageChange)="getPage($event)"></pagination-controls>

@@ -1,12 +1,30 @@
-<div class="category-container">
-  <label>Choose category:</label>
-  <ul class="nav nav-pills">
-    <li *ngFor="let category of categories | async">
-      <a href="#" (click)="onSelect(category.slug)" [routerLink]="['/', category.slug]">
-        {{category.name}}
-      </a>
-    </li>
-  </ul>
-</div>
+<div class="container">
+    <div class="row">
+      <div class="wrapper">
+            <div class="side-bar">
+                  <ul>
+                      <li class="menu-head">
+                          CATEGORIES <a href="#" class="push_menu"><span class="glyphicon glyphicon-align-justify pull-right"></span></a>
+                      </li>
+                      <div class="menu">         
+                          <li *ngFor="let category of categories | async">
+                              <a href="#" (click)="onSelect(category.slug)" [routerLink]="['/', category.slug]">
+                                {{category.name}}
+                              </a>
+                      </div>
+                  </ul>
+            </div>   
+              <div class="content">
+                  <div class="col-md-12">
+                      <div class="panel panel-default">
+                          <div class="panel-body">
+                              <item [slug]="selectedCategory"></item>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+    </div>
+  </div>
 
-<item [slug]="selectedCategory"></item>
+
