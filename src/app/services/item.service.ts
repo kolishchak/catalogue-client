@@ -12,11 +12,12 @@ export class ItemService {
 
   getItems(slug: string, page: string):Observable<Item[]> {
     let params = new URLSearchParams();
-    params.set('page', page);
+        params.set('category_slug', slug);
+        params.set('page', page);
     return this.http.get(this.itemUrl, { search: params })
-      .map((response: Response) => <Item[]>response.json())
-      .do(data => console.log('Items data:', data))
-      .catch(this.handleError);
+                    .map((response: Response) => <Item[]>response.json())
+                    .do(data => console.log('Items data:', data))
+                    .catch(this.handleError);
   }
 
   getItem(slug: string) {
