@@ -38,7 +38,5 @@ export class ItemService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
-  
-}
 
-a
+}

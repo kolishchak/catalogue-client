@@ -12,9 +12,9 @@ export class CategoryService {
 
   getCategories():Observable<Category[]> {
     return this.http.get(this.categoryUrl)
-      .map((response: Response) => <Category[]>response.json())
-      .do(data => console.log('server data:', data))
-      .catch(this.handleError);
+                    .map((response: Response) => <Category[]>response.json())
+                    .do(data => console.log('Categories data:', data))
+                    .catch(this.handleError);
   }
 
   public handleError = (error: Response) => {
