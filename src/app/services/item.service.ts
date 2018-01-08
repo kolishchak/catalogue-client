@@ -6,7 +6,7 @@ import { Item } from '../interfaces/item';
 
 @Injectable()
 export class ItemService {
-  private itemUrl = 'http://localhost:3000/items/';
+  private URL = 'http://localhost:3000/';
 
   constructor(private http: Http) {}
 
@@ -14,14 +14,24 @@ export class ItemService {
     let params = new URLSearchParams();
         params.set('category_slug', slug);
         params.set('page', page);
-    return this.http.get(this.itemUrl, { search: params })
+    return this.http.get(this.URL + 'items/', { search: params })
                     .map((response: Response) => <Item[]>response.json())
                     .do(data => console.log('Items data:', data))
                     .catch(this.handleError);
   }
 
   getItem(slug: string) {
-    return this.http.get(this.itemUrl + slug)
+    return this.http.get(this.URL + 'items/' + slug)
+  }
+
+  getCount(slug: string) {
+    let params = new URLSearchParams();
+        params.set('category_slug', slug);
+    return this.http.get(`${this.URL}items_count`, {search: params})
+                    .map((response: Response) => response.json())
+                    .map(json => json.count)
+                    .do(data => console.log('Items count:', data))
+                    .catch(this.handleError);
   }
 
   public handleError(error: Response) {
@@ -31,3 +41,4 @@ export class ItemService {
   
 }
 
+a
