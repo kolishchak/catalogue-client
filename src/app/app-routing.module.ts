@@ -6,8 +6,9 @@ import { ItemDetailsComponent } from './components/item-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/books/1', pathMatch: 'full' },
-  { path: 'items/:slug', component: ItemDetailsComponent },
-  { path: ':slug/:page', component: CategoryComponent }
+  { path: ':slug', redirectTo: ':slug/1'},
+  { path: ':slug/:page', component: CategoryComponent },
+  { path: 'items/:slug', component: ItemDetailsComponent }
 ];
 
 @NgModule({
