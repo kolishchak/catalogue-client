@@ -12,25 +12,27 @@ import { ItemService } from '../services/item.service';
 
 export class ItemComponent implements OnInit, OnChanges {
   @Input() slug: string;
+  @Input() p: number = 1;
 
+  itemsCount: Observable<number[]>
   items: Observable<Item[]>;
-  p: number = 1;
-
+  
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+    this.itemService.getCount(this.slug)
+                    .subscribe(response => this.itemsCount = response);
     this.items = this.itemService.getItems(this.slug, this.p.toString())
   }
 
   ngOnChanges(changes: { [property_name: string]: SimpleChange }) {
     for (let propName in changes) {
       let chng = changes[propName];
-      this.items = this.itemService.getItems(chng.currentValue, this.p.toString())
+        if (propName === 'slug' && chng.previousValue !== chng.currentValue) {
+          this.itemService.getCount(this.slug)
+                          .subscribe(response => this.itemsCount = response);
+        }
+      this.items = this.itemService.getItems(this.slug, this.p.toString())
     }
-  }
-
-  getPage(page: number) {
-    this.p = page;
-    this.itemService.getItems(this.slug, page.toString());
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
@@ -11,15 +11,15 @@ import { CategoryService } from '../services/category.service';
   styleUrls: ['../styles/category.component.scss']
 })
 
-export class CategoryComponent implements OnInit, OnDestroy {
+export class CategoryComponent implements OnInit {
   categories: Observable<Category[]>;
   sub: any;
   selectedCategory: string;
+  p: number = 1;
  
-
   constructor(private categoryService: CategoryService,
-              private activatedRoute: ActivatedRoute) { 
-    this.categories = this.categoryService.getCategories();
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { 
   }
   
   getCategories() {
@@ -29,6 +29,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.selectedCategory = params['slug'];
+      this.p = Number.parseInt(params['page']);
     });
     this.getCategories()
   }
@@ -41,4 +42,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
     this.selectedCategory = selectedCategory;
   }
 
+  getPage(page: number) {
+    this.router.navigate([this.selectedCategory, page])
+  }
 }
