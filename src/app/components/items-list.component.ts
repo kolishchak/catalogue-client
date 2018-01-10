@@ -5,18 +5,18 @@ import { Item } from '../interfaces/item';
 import { ItemService } from '../services/item.service';
 
 @Component({
-  selector: 'item',
-  templateUrl: '../templates/item.component.html',
-  styleUrls: ['../styles/item.component.scss'],
+  selector: 'items-list',
+  templateUrl: '../templates/items-list.component.html',
+  styleUrls: ['../styles/items-list.component.scss'],
 })
 
-export class ItemComponent implements OnInit, OnChanges {
+export class ItemsListComponent implements OnInit, OnChanges {
   @Input() slug: string;
   @Input() p: number = 1;
 
   itemsCount: Observable<number[]>
   items: Observable<Item[]>;
-  
+
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {

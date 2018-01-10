@@ -6,7 +6,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category.component';
-import { ItemComponent } from './components/item.component';
+import { ItemsListComponent } from './components/items-list.component';
 import { ItemDetailsComponent } from './components/item-details.component';
 
 import { CategoryService } from './services/category.service';
@@ -16,7 +16,7 @@ import { ItemService } from './services/item.service';
   declarations: [
     AppComponent,
     CategoryComponent,
-    ItemComponent,
+    ItemsListComponent,
     ItemDetailsComponent
   ],
   imports: [
