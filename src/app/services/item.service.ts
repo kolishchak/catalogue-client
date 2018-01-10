@@ -22,6 +22,9 @@ export class ItemService {
 
   getItem(slug: string) {
     return this.http.get(environment.API_URL + 'items/' + slug)
+                    .map((response: Response) => <Item[]>response.json())
+                    .do(data => console.log('Item info:', data))
+                    .catch(this.handleError);
   }
 
   getCount(slug: string) {
