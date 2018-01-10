@@ -5,10 +5,10 @@ import { CategoryComponent } from './components/category.component';
 import { ItemDetailsComponent } from './components/item-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/books/1', pathMatch: 'full' },
+  { path: '', component: CategoryComponent },
   { path: ':slug', redirectTo: ':slug/1'},
+  { path: 'items/:slug', component: ItemDetailsComponent },
   { path: ':slug/:page', component: CategoryComponent },
-  { path: 'items/:slug', component: ItemDetailsComponent }
 ];
 
 @NgModule({
