@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
+import { environment } from './../../environments/environment';
 import { Item } from '../interfaces/item';
 
 @Injectable()
 export class ItemService {
-  private URL = 'http://localhost:3000/';
 
   constructor(private http: Http) {}
 
@@ -14,20 +14,20 @@ export class ItemService {
     let params = new URLSearchParams();
         params.set('category_slug', slug);
         params.set('page', page);
-    return this.http.get(this.URL + 'items/', { search: params })
+    return this.http.get(environment.API_URL + 'items/', { search: params })
                     .map((response: Response) => <Item[]>response.json())
                     .do(data => console.log('Items data:', data))
                     .catch(this.handleError);
   }
 
   getItem(slug: string) {
-    return this.http.get(this.URL + 'items/' + slug)
+    return this.http.get(environment.API_URL + 'items/' + slug)
   }
 
   getCount(slug: string) {
     let params = new URLSearchParams();
         params.set('category_slug', slug);
-    return this.http.get(`${this.URL}items_count`, {search: params})
+    return this.http.get(`${environment.API_URL}items_count`, {search: params})
                     .map((response: Response) => response.json())
                     .map(json => json.count)
                     .do(data => console.log('Items count:', data))
