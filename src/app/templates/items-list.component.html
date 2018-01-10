@@ -11,7 +11,7 @@
     <tbody>
         <tr *ngFor="let item of items | async | paginate: { itemsPerPage: 5, currentPage: p, totalItems: itemsCount }">
             <td>{{item.name}}</td>
-            <td><span [routerLink]="['/items', item.slug]"> View more</span></td>
+            <td><a [routerLink]="['/items', item.slug]"> View more</a></td>
         </tr>
     </tbody>
 </table>
