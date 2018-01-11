@@ -14,7 +14,7 @@ import { CategoryService } from '../services/category.service';
 export class CategoryComponent implements OnInit {
   categories: Observable<Category[]>;
   sub: any;
-  selectedCategory: string;
+  slug: string;
   p: number = 1;
  
   constructor(private categoryService: CategoryService,
@@ -28,7 +28,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.activatedRoute.params.subscribe(params => {
-      this.selectedCategory = params['slug'];
+      this.slug = params['slug'];
       this.p = Number.parseInt(params['page']);
     });
     this.getCategories()
@@ -39,10 +39,10 @@ export class CategoryComponent implements OnInit {
   }
 
   onSelect(selectedCategory: string) {
-    this.selectedCategory = selectedCategory;
+    this.slug = selectedCategory;
   }
 
   getPage(page: number) {
-    this.router.navigate([this.selectedCategory, page])
+    this.router.navigate([this.slug, page])
   }
 }
