@@ -9,6 +9,7 @@ import { CategoryComponent } from './components/category.component';
 import { ItemsListComponent } from './components/items-list.component';
 import { ItemDetailsComponent } from './components/item-details.component';
 
+import { ApiService } from './services/api.service';
 import { CategoryService } from './services/category.service';
 import { ItemService } from './services/item.service';
 
@@ -26,6 +27,7 @@ import { ItemService } from './services/item.service';
     NgxPaginationModule
   ],
   providers: [
+    ApiService,
     CategoryService,
     ItemService
   ],
