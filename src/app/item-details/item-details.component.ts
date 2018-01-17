@@ -7,8 +7,8 @@ import { ItemService } from '../shared/services/item.service';
 
 @Component({
   selector: 'item-details',
-  templateUrl: '../templates/item-details.component.html',
-  styleUrls: ['../styles/item-details.component.scss']
+  templateUrl: './item-details.component.html',
+  styleUrls: ['./item-details.component.scss']
 })
 
 export class ItemDetailsComponent implements OnInit, OnDestroy {

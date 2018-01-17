@@ -6,8 +6,8 @@ import { ItemService } from '../shared/services/item.service';
 
 @Component({
   selector: 'items-list',
-  templateUrl: '../templates/items-list.component.html',
-  styleUrls: ['../styles/items-list.component.scss'],
+  templateUrl: './items-list.component.html',
+  styleUrls: ['./items-list.component.scss'],
 })
 
 export class ItemsListComponent implements OnInit, OnChanges {
