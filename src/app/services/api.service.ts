@@ -3,11 +3,14 @@ import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { environment } from './../../environments/environment';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class ApiService {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, 
+              private errorService: ErrorService) {}
+
 
    get(path: string, params?: Object): Observable<any> {
         const searchParams = new URLSearchParams();
@@ -15,11 +18,7 @@ export class ApiService {
         
         return this.http.get(environment.API_URL + path, { search: searchParams })
                         .map((response: Response) => response.json())
-                        .catch(this.handleError);
+                        .catch(this.errorService.handleError);
         }
 
-    handleError(error: Response) {
-      console.error(error);
-      return Observable.throw(error.json().error || 'Server error');
-    }
 }
