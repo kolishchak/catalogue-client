@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
-import { Category } from '../interfaces/category';
-import { CategoryService } from '../services/category.service';
+import { Category } from '../shared/interfaces/category';
+import { CategoryService } from '../shared/services/category.service';
 
 @Component({
   selector: 'category',
@@ -16,12 +16,12 @@ export class CategoryComponent implements OnInit {
   sub: any;
   slug: string;
   p: number = 1;
- 
+
   constructor(private categoryService: CategoryService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { 
+              private router: Router) {
   }
-  
+
   getCategories() {
     this.categories = this.categoryService.getCategories()
   }

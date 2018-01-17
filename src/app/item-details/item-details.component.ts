@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from "@angular/router";
 import { Location } from "@angular/common";
 
-import { Item } from '../interfaces/item';
-import { ItemService } from '../services/item.service';
+import { Item } from '../shared/interfaces/item';
+import { ItemService } from '../shared/services/item.service';
 
 @Component({
   selector: 'item-details',
@@ -33,5 +33,5 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
   goBack() {
     this.location.back();
-  } 
+  }
 }

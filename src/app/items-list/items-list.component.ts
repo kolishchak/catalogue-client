@@ -1,8 +1,8 @@
 import { Component, OnInit, OnChanges, Input, SimpleChange } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
-import { Item } from '../interfaces/item';
-import { ItemService } from '../services/item.service';
+import { Item } from '../shared/interfaces/item';
+import { ItemService } from '../shared/services/item.service';
 
 @Component({
   selector: 'items-list',

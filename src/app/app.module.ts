@@ -5,11 +5,11 @@ import { HttpModule } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './components/category.component';
-import { ItemsListComponent } from './components/items-list.component';
-import { ItemDetailsComponent } from './components/item-details.component';
+import { CategoryComponent } from './category/category.component';
+import { ItemsListComponent } from './items-list/items-list.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
-import { ApiService, ErrorService, CategoryService, ItemService } from './services'
+import { ApiService, ErrorService, CategoryService, ItemService } from './shared/services';
 
 @NgModule({
   declarations: [

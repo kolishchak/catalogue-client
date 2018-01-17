@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CategoryComponent } from './components/category.component';
-import { ItemDetailsComponent } from './components/item-details.component';
+import { CategoryComponent } from './category/category.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 const routes: Routes = [
   { path: '', component: CategoryComponent },
